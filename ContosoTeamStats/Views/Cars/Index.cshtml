@@ -1,0 +1,57 @@
+﻿@using CarRaces.Models
+
+@model IEnumerable<CarRaces.Models.Car>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<table class="table">
+    <tr>
+        <td>@Html.ActionLink("Create New", "Create")</td>
+        <td>@Html.ActionLink("Race Car", "Index", new { actionType = "raceCars" })</td>
+        <td>@Html.ActionLink("Clear Cache", "Index", new { actionType = "clearCache" })</td>
+        <td>@Html.ActionLink("List from Cache", "Index", new { actionType = Constants.CarsListCacheName })</td>
+        <td>@Html.ActionLink("Sorted Set from Cache", "Index", new { actionType = Constants.SortedCarListCacheName })</td>
+        <td>@Html.ActionLink("Top 5 Cars from Cache", "Index", new { actionType = "carsSortedTop5" })</td>
+        <td>@Html.ActionLink("Load from DB", "Index", new { actionType = "fromDB" })</td>
+        <td>@Html.ActionLink("Rebuild DB", "Index", new { actionType = "rebuildDB" })</td>
+
+    </tr>
+    <tr>
+        <td colspan="5">@ViewBag.msg</td>
+    </tr>
+
+</table>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hp)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hp)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
