@@ -14,19 +14,19 @@ namespace CarRaces.Models
 
         public long Hp { get; set; }
 
-         
+
         static public void RaceOfCars(IEnumerable<Car> cars)
         {
             Random r = new Random();
-            foreach(var element in cars)
+            foreach (var element in cars)
             {
-                element.Hp = r.Next(1000,3000);
+                element.Hp = r.Next(1000, 3000);
             }
         }
     }
 
 
-    public class CarContext:DbContext
+    public class CarContext : DbContext
     {
         public CarContext() : base("CarContext") { }
 
@@ -34,7 +34,7 @@ namespace CarRaces.Models
     }
 
 
-    public class CarInitializer:CreateDatabaseIfNotExists<CarContext>
+    public class CarInitializer : CreateDatabaseIfNotExists<CarContext>
     {
         protected override void Seed(CarContext context)
         {
@@ -49,18 +49,18 @@ namespace CarRaces.Models
             };
 
             Car.RaceOfCars(cars);
-            cars.ForEach(t=>context.Cars.Add(t));
+            cars.ForEach(t => context.Cars.Add(t));
             context.SaveChanges();
         }
     }
 
 
 
-    public class CarConfiguration:DbConfiguration
+    public class CarConfiguration : DbConfiguration
     {
         public CarConfiguration()
         {
-            SetExecutionStrategy("System.Data.SqlClient",()=>new SqlAzureExecutionStrategy());
+            SetExecutionStrategy("System.Data.SqlClient", () => new SqlAzureExecutionStrategy());
         }
     }
 }

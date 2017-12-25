@@ -1,16 +1,14 @@
 ﻿using CarRaces.Models;
+using Newtonsoft.Json;
+using StackExchange.Redis;
+using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-
-using StackExchange.Redis;
-using System;
-using System.Configuration;
-
-using System.Diagnostics;
-using Newtonsoft.Json;
-using System.Collections.Generic;
 
 namespace CarRaces.Controllers
 {
